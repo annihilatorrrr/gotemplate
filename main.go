@@ -17,7 +17,7 @@ import (
 func main() {
 	token := os.Getenv("TOKEN")
 	if token == "" {
-        token = "111:3333kkkk"
+		token = "111:3333kkkk"
 	}
 	b, err := gotgbot.NewBot(token, nil)
 	if err != nil {
