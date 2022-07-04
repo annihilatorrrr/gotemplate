@@ -33,8 +33,6 @@ func main() {
 			MaxRoutines: 20,
 		},
 	})
-	dispatcher := updater.Dispatcher
-	dispatcher.AddHandler(handlers.NewCommand("start", Start))
 	err = updater.StartPolling(b, &ext.PollingOpts{
 		DropPendingUpdates: true,
 		GetUpdatesOpts: gotgbot.GetUpdatesOpts{
