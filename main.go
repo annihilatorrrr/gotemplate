@@ -46,7 +46,6 @@ func main() {
 		panic(err.Error())
 	}
 	log.Printf("%s has been started!\n", b.User.Username)
-	runtime.GC()
 	updater.Idle()
 	_ = updater.Stop()
 }
