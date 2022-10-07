@@ -3,15 +3,10 @@ package main
 import (
 	"log"
 	"os"
-	"runtime"
-	"sync"
 	"time"
-
-	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers/filters/message"
 
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
-	"github.com/PaulSonOfLars/gotgbot/v2/ext/handlers"
 )
 
 func main() {
@@ -47,5 +42,4 @@ func main() {
 	}
 	log.Printf("%s has been started!\n", b.User.Username)
 	updater.Idle()
-	_ = updater.Stop()
 }
