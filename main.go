@@ -19,16 +19,14 @@ func main() {
 		panic(err.Error())
 	}
 	updater := ext.NewUpdater(&ext.UpdaterOpts{
-		ErrorLog: nil,
-		DispatcherOpts: ext.DispatcherOpts{
-			Error: func(b *gotgbot.Bot, ctx *ext.Context, err error) ext.DispatcherAction {
-				log.Println("An error occurred while handling update:", err.Error())
-				return ext.DispatcherActionNoop
+		Dispatcher: ext.NewDispatcher(&ext.DispatcherOpts{
+			UnhandledErrFunc: func(err error) {
+				log.Printf("An error occurred while handling update:\n%s", err.Error())
 			},
-			MaxRoutines: 20,
-		},
+			MaxRoutines: -1,
+		}),
 	})
-	err = updater.StartPolling(b, &ext.PollingOpts{
+	if err = updater.StartPolling(b, &ext.PollingOpts{
 		DropPendingUpdates: true,
 		GetUpdatesOpts: gotgbot.GetUpdatesOpts{
 			Timeout: 5,
@@ -36,8 +34,7 @@ func main() {
 				Timeout: time.Second * 5,
 			},
 		},
-	})
-	if err != nil {
+	}); err != nil {
 		panic(err.Error())
 	}
 	log.Printf("%s has been started!\n", b.User.Username)
