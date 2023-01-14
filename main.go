@@ -16,14 +16,13 @@ func main() {
 	}
 	b, err := gotgbot.NewBot(token, nil)
 	if err != nil {
-		panic(err.Error())
+		log.Fatalln(err.Error())
 	}
 	updater := ext.NewUpdater(&ext.UpdaterOpts{
 		Dispatcher: ext.NewDispatcher(&ext.DispatcherOpts{
 			UnhandledErrFunc: func(err error) {
 				log.Printf("An error occurred while handling update:\n%s", err.Error())
 			},
-			MaxRoutines: -1,
 		}),
 	})
 	if err = updater.StartPolling(b, &ext.PollingOpts{
@@ -35,7 +34,7 @@ func main() {
 			},
 		},
 	}); err != nil {
-		panic(err.Error())
+		log.Fatalln(err.Error())
 	}
 	log.Printf("%s has been started!\n", b.User.Username)
 	updater.Idle()
