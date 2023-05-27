@@ -36,6 +36,6 @@ func main() {
 	}); err != nil {
 		log.Fatalln(err.Error())
 	}
-	log.Printf("%s has been started!\n", b.User.Username)
+	log.Println(b.User.FirstName, " has been started!")
 	updater.Idle()
 }
