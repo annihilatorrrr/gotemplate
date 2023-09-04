@@ -1,5 +1,5 @@
 module github.com/annihilatorrrr/gotemplate
 
-go 1.20.1
+go 1.21.0
 
 require github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.20
