@@ -27,7 +27,7 @@ func main() {
 	})
 	if err = updater.StartPolling(b, &ext.PollingOpts{
 		DropPendingUpdates: true,
-		GetUpdatesOpts: gotgbot.GetUpdatesOpts{
+		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
 			Timeout: 5,
 			RequestOpts: &gotgbot.RequestOpts{
 				Timeout: time.Second * 5,
