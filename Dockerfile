@@ -1,4 +1,4 @@
-FROM golang:1.21.0-alpine3.18 as builder
+FROM golang:1.21.1-alpine3.18 as builder
 WORKDIR /gotemplate
 RUN apk update && apk upgrade --available && sync && apk add --no-cache --virtual .build-deps
 COPY . .
