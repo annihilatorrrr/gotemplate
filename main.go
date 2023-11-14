@@ -18,13 +18,14 @@ func main() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
-	updater := ext.NewUpdater(&ext.UpdaterOpts{
-		Dispatcher: ext.NewDispatcher(&ext.DispatcherOpts{
-			UnhandledErrFunc: func(err error) {
-				log.Printf("An error occurred while handling update:\n%s", err.Error())
-			},
-		}),
+	dispatcher := ext.NewDispatcher(&ext.DispatcherOpts{
+		Error: func(b *gotgbot.Bot, ctx *ext.Context, err error) ext.DispatcherAction {
+			log.Println("an error occurred while handling update:", src.HashToken(err))
+			return ext.DispatcherActionNoop
+		},
+		MaxRoutines: -1,
 	})
+	updater := ext.NewUpdater(dispatcher, nil)
 	if err = updater.StartPolling(b, &ext.PollingOpts{
 		DropPendingUpdates: true,
 		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
