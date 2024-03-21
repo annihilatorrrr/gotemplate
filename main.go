@@ -20,7 +20,7 @@ func main() {
 	}
 	dispatcher := ext.NewDispatcher(&ext.DispatcherOpts{
 		Error: func(b *gotgbot.Bot, ctx *ext.Context, err error) ext.DispatcherAction {
-			log.Println("an error occurred while handling update:", src.HashToken(err))
+			log.Println("an error occurred while handling update:", err.Error())
 			return ext.DispatcherActionNoop
 		},
 		MaxRoutines: -1,
