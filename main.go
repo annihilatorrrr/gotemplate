@@ -27,9 +27,11 @@ func main() {
 	})
 	updater := ext.NewUpdater(dispatcher, nil)
 	if err = updater.StartPolling(b, &ext.PollingOpts{
-		DropPendingUpdates: true,
+		DropPendingUpdates:    false,
+		EnableWebhookDeletion: true,
 		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
-			Timeout: 5,
+			AllowedUpdates: []string{"message"},
+			Timeout:        5,
 			RequestOpts: &gotgbot.RequestOpts{
 				Timeout: time.Second * 5,
 			},
