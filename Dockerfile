@@ -3,7 +3,7 @@ WORKDIR /gotemplate
 RUN apk update && apk upgrade --available && sync && apk add --no-cache --virtual .build-deps
 COPY . .
 RUN go build -ldflags="-w -s" .
-FROM alpine:3.20.1
+FROM alpine:3.20.2
 RUN apk update && apk upgrade --available && sync
 COPY --from=builder /gotemplate/gotemplate /gotemplate
 ENTRYPOINT ["/gotemplate"]
