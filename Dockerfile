@@ -5,5 +5,6 @@ COPY . .
 RUN go build -ldflags="-w -s" .
 FROM alpine:3.21.0
 RUN apk update && apk upgrade --available && sync
+WORKDIR /gotemplate
 COPY --from=builder /gotemplate/gotemplate /gotemplate
 ENTRYPOINT ["/gotemplate"]
