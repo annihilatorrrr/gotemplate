@@ -1,9 +1,9 @@
-FROM golang:1.24.1-alpine3.20 as builder
+FROM golang:1.24.1-alpine3.21 AS builder
 WORKDIR /gotemplate
-RUN apk update && apk upgrade --available && sync && apk add --no-cache --virtual .build-deps
+RUN apk add --no-cache ca-certificates
 COPY . .
-RUN go build -ldflags="-w -s" .
-FROM alpine:3.21.3
-RUN apk update && apk upgrade --available && sync
+RUN go build -trimpath -ldflags="-w -s" .
+FROM scratch
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /gotemplate/gotemplate /gotemplate
 ENTRYPOINT ["/gotemplate"]
