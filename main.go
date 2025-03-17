@@ -31,10 +31,6 @@ func main() {
 		EnableWebhookDeletion: true,
 		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
 			AllowedUpdates: []string{"message"},
-			Timeout:        5,
-			RequestOpts: &gotgbot.RequestOpts{
-				Timeout: time.Second * 5,
-			},
 		},
 	}); err != nil {
 		log.Fatalln(err.Error())
