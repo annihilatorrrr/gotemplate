@@ -1,6 +1,6 @@
 FROM golang:1.25.4-alpine3.22 AS builder
 WORKDIR /gotemplate
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache git ca-certificates
 COPY . .
 RUN go build -trimpath -ldflags="-w -s" .
 FROM scratch
