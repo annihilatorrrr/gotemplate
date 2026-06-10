@@ -72,7 +72,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err.Error())
 	}
-	pbot, err = telegram.NewClient(telegram.ClientConfig{AppID: 6, AppHash: "", LogLevel: telegram.LogWarn, Session: "pbot.session", FloodHandler: handleIfFlood})
+	pbot, err = telegram.NewClient(telegram.ClientConfig{AppID: 6, AppHash: "eb06d4abfb49dc3eeb1aeb98ae0f581e", LogLevel: telegram.LogWarn, Session: "pbot.session", FloodHandler: handleIfFlood})
 	if err != nil {
 		log.Fatal(err)
 	}
