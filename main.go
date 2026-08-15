@@ -102,5 +102,5 @@ func main() {
 	log.Println(b.User.FirstName, " has been started!")
 	updater.Idle()
 	_ = pbot.Stop()
-	defer db.Close()
+	defer func(db *redis.Client) { _ = db.Close() }(db)
 }
