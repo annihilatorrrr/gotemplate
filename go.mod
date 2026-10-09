@@ -1,6 +1,6 @@
 module gotemplate
 
-go 1.26.4
+go 1.27.1
 
 require (
 	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.36
