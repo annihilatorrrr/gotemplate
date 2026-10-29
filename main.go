@@ -68,6 +68,7 @@ func main() {
 	if err = db.Ping(cotx).Err(); err != nil {
 		log.Fatal(err.Error())
 	}
+	defer func(db *redis.Client) { _ = db.Close() }(db)
 	b, err := gotgbot.NewBot(token, nil)
 	if err != nil {
 		log.Fatalln(err.Error())
@@ -102,5 +103,4 @@ func main() {
 	log.Println(b.User.FirstName, " has been started!")
 	updater.Idle()
 	_ = pbot.Stop()
-	defer func(db *redis.Client) { _ = db.Close() }(db)
 }
