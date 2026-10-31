@@ -95,6 +95,10 @@ func main() {
 		DropPendingUpdates:    true,
 		EnableWebhookDeletion: true,
 		GetUpdatesOpts: &gotgbot.GetUpdatesOpts{
+			Timeout: 9,
+			RequestOpts: &gotgbot.RequestOpts{
+				Timeout: time.Second * 10,
+			},
 			AllowedUpdates: []string{"message"},
 		},
 	}); err != nil {
