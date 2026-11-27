@@ -5,7 +5,7 @@ go 1.27.1
 require (
 	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.37
 	github.com/amarnathcjd/gogram v1.7.6
-	github.com/redis/go-redis/v9 v9.23.0
+	github.com/redis/go-redis/v9 v9.24.0
 )
 
 require (
